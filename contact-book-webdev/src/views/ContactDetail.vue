@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h1>{{ contact.firstName }} {{ contact.lastName }}</h1>
-    <p>Email: {{ contact.email }}</p>
-    <router-link :to="`/edit/${contact.id}`">Edit</router-link>
-    <button @click="deleteContact">Delete</button>
+    <div v-if="contact">
+      <h1>{{ contact.firstName }} {{ contact.lastName }}</h1>
+      <p>Email: {{ contact.email }}</p>
+      <router-link :to="`/edit/${contact.id}`">Edit</router-link>
+      <button @click="deleteContact">Delete</button>
+    </div>
+    <div v-else>
+      <p>Loading contact details...</p>
+    </div>
     <router-link to="/">Back to List</router-link>
   </div>
 </template>
@@ -18,11 +23,16 @@ export default {
     const route = useRoute();
     const router = useRouter();
     const contacts = ref(getContacts());
-    const contact = ref({});
+    const contact = ref(null);
 
     onMounted(() => {
       const id = route.params.id;
       contact.value = contacts.value.find(c => c.id === id);
+
+      if (!contact.value) {
+        alert("Contact not found.");
+        router.push("/");
+      }
     });
 
     const deleteContact = () => {
