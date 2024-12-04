@@ -10,9 +10,9 @@
         <p v-if="contact.description" class="description">{{ contact.description }}</p>
       </li>
     </ul>
-    <button @click="openDeleteModal">Delete a Contact</button>
-    <router-link to="/add">Add New Contact</router-link>
-
+    <button class="deleteBut" @click="openDeleteModal">Delete a Contact</button>
+    <br>
+    <router-link class="editBut" to="/add">Add New Contact</router-link>
     <!-- Delete Modal -->
     <div v-if="showDeleteModal" class="modal-overlay">
       <div class="modal">
@@ -88,9 +88,29 @@ input {
   padding: 5px;
   width: 80%;
 }
+.deleteBut {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.deleteBut:hover {
+  background-color: #c0392b;
+}
 ul {
   list-style: none;
   padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  color: #2fd5b6 !important;
+  border-radius: 5px;
 }
 li {
   margin: 5px 0;

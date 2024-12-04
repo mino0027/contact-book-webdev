@@ -2,7 +2,7 @@
   <div id="app">
     <!-- You can add a header or navigation bar here -->
     <header>
-      <h1>Contact Book</h1>
+      <h1>Contact Book Final</h1>
       <nav>
         <router-link to="/">Home</router-link> | 
         <router-link to="/add">Add New Contact</router-link>
@@ -29,9 +29,10 @@ export default {
 }
 
 header {
-  background-color: #4CAF50;
+  background-color: #2fd5b6;
   padding: 10px;
   color: white;
+  border-radius: 15px;
 }
 
 nav {
@@ -45,7 +46,8 @@ nav a {
 }
 
 nav a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: #076f5c;
 }
 
 h1 {
